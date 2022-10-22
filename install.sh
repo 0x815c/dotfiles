@@ -1,7 +1,9 @@
 #!/bin/bash
 DOT_DIR="$HOME/dotfiles"
-for f in *
-do
+
+link() {
+    [[ "$f" == "." ]] && continue
+    [[ "$f" == ".." ]] && continue
     [[ "$f" == ".git" ]] && continue
     [[ "$f" == ".gitignore" ]] && continue
     [[ "$f" == ".DS_Store" ]] && continue
@@ -10,5 +12,15 @@ do
     [[ "$f" == "install.sh" ]] && continue
 
     ln -snf $DOT_DIR/"$f" $HOME/"$f"
-    echo "Installed .$f"
+    echo "linked $1"
+}
+
+for f in *
+do
+    link "$f"
+done
+
+for f in .*
+do
+    link "$f"
 done
