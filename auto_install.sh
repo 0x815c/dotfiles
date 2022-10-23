@@ -14,6 +14,7 @@ if [ ! -d ${DOT_DIR} ]; then
         exit 1
     fi
     cd ${DOT_DIR}
+    pwd
     sh ./install.sh
 else
     echo "dotfiles already exists"
